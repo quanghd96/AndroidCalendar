@@ -49,6 +49,16 @@ slSchedule.getMonthCalendar().setTodayToView();
 slSchedule.initData(year, month, day);
 ```
 
+Install:<br/>
+---
+```
+maven { url 'https://jitpack.io' }
+```
+
+```
+implementation 'com.github.quanghd96.AndroidCalendar:calendar:1.0'
+```
+
 Screenshot:<br/>
 ---
 ![image](https://github.com/xiaojianglaile/Calendar/blob/master/raw/jeek_image_1.gif)
