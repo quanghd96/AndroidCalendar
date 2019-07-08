@@ -123,4 +123,11 @@ public class MonthCalendarView extends ViewPager implements OnMonthClickListener
         return getMonthViews().get(getCurrentItem());
     }
 
+    public void setMonthFlagBitmap(int bitmap) {
+        if (getCurrentMonthView() != null) {
+            getCurrentMonthView().setMonFlagBitmap(bitmap);
+            getCurrentMonthView().invalidate();
+        }
+    }
+
 }

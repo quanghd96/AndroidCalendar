@@ -45,6 +45,7 @@ public class MonthView extends View {
     private int mColumnSize, mRowSize, mSelectCircleSize;
     private int mDaySize;
     private int mLunarTextSize;
+    private int mMonthBitmap;
     private int mWeekRow; // 当前月份第几周
     private int mCircleRadius = 6;
     private int[][] mDaysText;
@@ -253,6 +254,7 @@ public class MonthView extends View {
                 canvas.drawCircle((startRecX + endRecX) / 2, (startRecY + endRecY) / 2, mSelectCircleSize, mPaint);
                 mWeekRow = row + 1;
             }
+            drawFlagCircle(day, canvas);
             if (dayString.equals(String.valueOf(mSelDay))) {
                 selectedPoint[0] = row;
                 selectedPoint[1] = col;
@@ -433,6 +435,18 @@ public class MonthView extends View {
         }
     }
 
+    private void drawFlagCircle(int day, Canvas canvas) {
+        if (((1 << day) & mMonthBitmap) != 0) {
+            mPaint.setColor(mHintCircleColor);
+            int weekNumber = CalendarUtils.getFirstDayWeek(mSelYear, mSelMonth);
+            int col = (day + weekNumber - 1) % 7;
+            int row = (day + weekNumber - 1) / 7;
+            float circleX = (float) (mColumnSize * col + mColumnSize * 0.5);
+            float circleY = (float) (mRowSize * row + mRowSize * 0.75);
+            canvas.drawCircle(circleX, circleY, mCircleRadius, this.mPaint);
+        }
+    }
+
     @Override
     public boolean performClick() {
         return super.performClick();
@@ -447,6 +461,10 @@ public class MonthView extends View {
         mSelYear = year;
         mSelMonth = month;
         mSelDay = day;
+    }
+
+    public void setMonFlagBitmap(int bitmap) {
+        this.mMonthBitmap = bitmap;
     }
 
     private void doClickAction(int x, int y) {

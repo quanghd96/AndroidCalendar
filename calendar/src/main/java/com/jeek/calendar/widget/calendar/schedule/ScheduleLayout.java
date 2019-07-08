@@ -2,6 +2,7 @@ package com.jeek.calendar.widget.calendar.schedule;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -45,7 +46,7 @@ public class ScheduleLayout extends FrameLayout {
     private int mMinDistance;
     private int mAutoScrollDistance;
     private int mDefaultView;
-    private float mDownPosition[] = new float[2];
+    private float[] mDownPosition = new float[2];
     private boolean mIsScrolling = false;
     private boolean mIsAutoChangeMonthRow;
     private boolean mCurrentRowsIsSix = true;
@@ -91,11 +92,11 @@ public class ScheduleLayout extends FrameLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        mcvCalendar = (MonthCalendarView) findViewById(R.id.mcvCalendar);
-        wcvCalendar = (WeekCalendarView) findViewById(R.id.wcvCalendar);
-        rlMonthCalendar = (RelativeLayout) findViewById(R.id.rlMonthCalendar);
-        rlScheduleList = (RelativeLayout) findViewById(R.id.rlScheduleList);
-        rvScheduleList = (ScheduleRecyclerView) findViewById(R.id.rvScheduleList);
+        mcvCalendar = findViewById(R.id.mcvCalendar);
+        wcvCalendar = findViewById(R.id.wcvCalendar);
+        rlMonthCalendar = findViewById(R.id.rlMonthCalendar);
+        rlScheduleList = findViewById(R.id.rlScheduleList);
+        rvScheduleList = findViewById(R.id.rvScheduleList);
         bindingMonthAndWeekCalendar();
     }
 
