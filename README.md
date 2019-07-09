@@ -63,3 +63,7 @@ Screenshot:<br/>
 ---
 ![image](https://github.com/xiaojianglaile/Calendar/blob/master/raw/jeek_image_1.gif)
 ![image](https://github.com/xiaojianglaile/Calendar/blob/master/raw/jeek_image_2.png)
+
+License
+-------
+BSD, part MIT and Apache 2.0. See the [LICENSE][16] file for details.
